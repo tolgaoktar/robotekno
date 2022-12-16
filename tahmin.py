@@ -9,9 +9,8 @@ while True:
 
     if tahmin == rastgelesayi:
         print("******************")
-        for i in range(10):
-            print("Doğru Tahmin!!")
-            break
+        print("Doğru Tahmin!!")
+        break
 
     elif tahmin < rastgelesayi:
         print("Daha büyük bir sayı söyleyin!")
