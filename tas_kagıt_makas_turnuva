@@ -1,17 +1,19 @@
 import random
 
-#bu oyunda skor tutuyoruz.
-# Bu program, kullanıcının taş, kağıt veya makas seçimini alır ve ardından bilgisayarın rasgele bir seçim yapmasını sağlar. 
+#bu oyunda 3 elde kazanan oyunu kazanır.
+#Bu program, kullanıcının her turda taş, kağıt veya makas seçimini alır 
+# ve bilgisayarın rasgele bir seçim yapmasını sağlar. 
 # Ardından, her iki seçimin sonucunu karşılaştırır ve sonucu ekrana yazdırır. 
-# Skorlar her seferinde güncellenir ve sonuçta en yüksek skora sahip oyuncu kazanır.
-# Son olarak, kullanıcıya yeniden oynamak isteyip istemediğini sorar.
-#  Kullanıcı 'E' harfine basarsa, oyun yeniden başlar. 'H' harfine basarsa, program sonlandırılır.
+# Skorlar her tur sonunda güncellenir ve sonunda en yüksek skora sahip oyuncu kazanır.
+# Son olarak, oyun sonunda kazanan açıklanır ve oyun biter.
 
 print("Taş-Kağıt-Makas oyununa hoş geldiniz!")
 oyuncu_skor = 0
 yapayzeka_skor = 0
 
-while True:
+for round in range(3):
+    print(f"--- {round+1}. Tur ---")
+
     secenekler = ["taş", "kağıt", "makas"]
     yapayzeka_secimi = random.choice(secenekler)
     
@@ -22,7 +24,7 @@ while True:
     print("Bilgisayarın seçimi: ", yapayzeka_secimi)
 
     if oyuncu_secimi == yapayzeka_secimi:
-        print("Berabere! Tekrar deneyin.")
+        print("Berabere!")
     elif oyuncu_secimi == "taş":
         if yapayzeka_secimi == "kağıt":
             print("Kaybettiniz! Bilgisayar kağıt seçti.")
@@ -45,10 +47,12 @@ while True:
             print("Tebrikler! Kazandınız. Bilgisayar kağıt seçti.")
             oyuncu_skor += 1
 
-    print(f"Aktif Skor: Oyuncu {oyuncu_skor} - Bilgisayar {yapayzeka_skor}")
+    print(f"Aktif Skor: Oyuncu {oyuncu_skor} - Bilgisayar {yapayzeka_skor}\n")
 
-    play_again = input("Tekrar oynamak istiyor musunuz? (E/H) ").lower()
-    if play_again != "e":
-        break
-
-print("Oyundan çıktınız. Tekrar bekleriz!")
+print("Oyun Bitti!")
+if oyuncu_skor > yapayzeka_skor:
+    print(f"Tebrikler! Oyuncu kazandı! ({oyuncu_skor} - {yapayzeka_skor})")
+elif oyuncu_skor < yapayzeka_skor:
+    print(f"Kaybettiniz! Bilgisayar kazandı. ({oyuncu_skor} - {yapayzeka_skor})")
+else:
+    print("Oyun berabere!")

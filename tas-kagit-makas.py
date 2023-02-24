@@ -1,4 +1,10 @@
 import random
+# Bu program, kullanıcının taş, kağıt veya makas seçimini alır ve 
+# ardından bilgisayarın rasgele bir seçim yapmasını sağlar. 
+# sonra her iki seçimin sonucunu karşılaştırır ve sonucu ekrana yazdırır. 
+# Son olarak, kullanıcıya yeniden oynamak isteyip istemediğini sorar.
+# Kullanıcı 'E' harfine basarsa, oyun yeniden başlar. 
+# 'H' ya da başka bir harfe basarsa program sonlandırılır.
 
 print("Taş-Kağıt-Makas oyununa hoş geldiniz!")
 #while true başlama komutumuz
@@ -11,37 +17,37 @@ while True:
     # lower fonksiyonu kullanıcı girdilerini büyük-küçük harf duyarlılığından kurtarır, 
     # büyük TAŞ ya da taş yazabilirsin.
     # input komutu kullanıcıdan veri almak için kullanıyorduk.
-    kullanici_secimi = input("Taş mı, kağıt mı, makas mı? ").lower()
+    oyuncu_secimi = input("Taş mı, kağıt mı, makas mı? ").lower()
 
     #while eğer anlamına gelir eğer yanlış bir şey yazarsak bu uyarı gelecek.
-    while kullanici_secimi not in secenekler:
-        kullanici_secimi = input("Geçersiz seçim! Tekrar deneyin (taş/kağıt/makas): ").lower()
+    while oyuncu_secimi not in secenekler:
+        oyuncu_secimi = input("Geçersiz seçim! Tekrar deneyin (taş/kağıt/makas): ").lower()
 
     #print ekrana bir mesaj göndermek, input ise kullanıcıdan veri almak için kullanıyorduk.
     print("Bilgisayarın seçimi: ", yapayzeka_secimi)
 #şimdi oyuna başlıyoruz.
 # yanyana iki eşittir denk demektir. 
 # kullanıcı seçimi yapay zeka seçimiyle aynısı olursa berabere olur. İkisi de taş seçerse mesela.
-    if kullanici_secimi == yapayzeka_secimi:
+    if oyuncu_secimi == yapayzeka_secimi:
         print("Berabere! Tekrar deneyin.")
 
     #bir fonksiyon içinde birden fazla eğer ifadesi varsa elif içerisine yazabiliriz. 
     # burada 2 seçeneğimiz var o yüzden birden fazla.
-    elif kullanici_secimi == "taş":
+    elif oyuncu_secimi == "taş":
         if yapayzeka_secimi == "kağıt":
             print("Kaybettiniz! Bilgisayar kağıt seçti.")
         else:
             print("Tebrikler! Kazandınız. Bilgisayar makas seçti.")
 
         #kuralları biz belirliyoruz. print ile kullanıcıya gösteriyoruz.
-    elif kullanici_secimi == "kağıt":
+    elif oyuncu_secimi == "kağıt":
         if yapayzeka_secimi == "makas":
             print("Kaybettiniz! Bilgisayar makas seçti.")
         else:
             print("Tebrikler! Kazandınız. Bilgisayar taş seçti.")
 
         #4 olasılık var o yüzden 4 adet mesajımız oldu.
-    elif kullanici_secimi == "makas":
+    elif oyuncu_secimi == "makas":
         if yapayzeka_secimi == "taş":
             print("Kaybettiniz! Bilgisayar taş seçti.")
         else:
