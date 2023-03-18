@@ -1,62 +1,69 @@
 import random
 
 # Fizz-Tsubasa-Yasaho oyunu için gereken değişkenler
-options = ['fizz', 'tsubasa', 'yasaho']
-player_score = 0
-computer_score = 0
-
+secenekler = ['fizz', 'tsubasa', 'yasaho']
+oyuncu_skor = 0
+yapayzeka_skor = 0
 # Kazanan kombinasyonları için dictionary
 winning_combinations = {
     'fizz': 'tsubasa',
     'tsubasa': 'yasaho',
     'yasaho': 'fizz'
 }
-
+print("Oyun Başlasın!")
 # Oyuncunun hamle yapması
 def player_turn():
-    while True:
-        player_choice = input("Enter your choice (fizz/tsubasa/yasaho): ").lower()
-        if player_choice in options:
-            return player_choice
-        else:
-            print("Invalid choice, please try again.")
-
+     while True:
+         oyuncu_secimi = input("Karakter seçimini yap! (fizz/tsubasa/yasaho): ").lower()
+         if oyuncu_secimi in secenekler:
+             return oyuncu_secimi
+         else:
+             print("Yanlış giriş yaptınız. Tekrar deneyin! ")
+             
 # Bilgisayarın hamle yapması
 def computer_turn():
-    return random.choice(options)
+    return random.choice(secenekler)
 
 # Hamleleri karşılaştırma ve kazananı belirleme
-def compare_moves(player_choice, computer_choice):
-    global player_score
-    global computer_score
+def compare_moves(oyuncu_secimi, yapayzeka_secimi):
+    global oyuncu_skor
+    global yapayzeka_skor
     
-    if winning_combinations[player_choice] == computer_choice:
-        print("Player wins!")
-        player_score += 1
-    elif winning_combinations[computer_choice] == player_choice:
-        print("Computer wins!")
-        computer_score += 1
+    if winning_combinations[oyuncu_secimi] == yapayzeka_secimi:
+        print("Oyuncunun karakteri kazandı!")
+        oyuncu_skor += 10
+        print("Oyuncu: ", oyuncu_skor)
+        print("Yapayzeka :" , yapayzeka_skor)
+    elif winning_combinations[yapayzeka_secimi] == oyuncu_secimi:
+        print("Yapay Zekanın karakteri kazandı!")
+        yapayzeka_skor += 10
+        print("Oyuncu: ", oyuncu_skor)
+        print("Yapayzeka :" , yapayzeka_skor)
     else:
-        print("Tie!")
+        print("Berabere!")
+        oyuncu_skor += 1
+        yapayzeka_skor += 1
+        print("Oyuncu: ", oyuncu_skor)
+        print("Yapayzeka :" , yapayzeka_skor)
 
 # Oyunu başlatma
 def play_game():
-    global player_score
-    global computer_score
-    
+    global oyuncu_skor
+    global yapayzeka_skor
     # Oyun 5 turdan oluşacak
-    for i in range(5):
-        print("Round", i+1)
-        player_choice = player_turn()
-        computer_choice = computer_turn()
-        print("Player chose", player_choice)
-        print("Computer chose", computer_choice)
-        compare_moves(player_choice, computer_choice)
+    for i in range(3):
+        print(i+1, ".", "Tur")
+        oyuncu_secimi = player_turn()
+        yapayzeka_secimi = computer_turn()
+        print("Oyuncu Seçimi", oyuncu_secimi)
+        print("Yapay Zeka'nın Seçimi", yapayzeka_secimi)
+        compare_moves(oyuncu_secimi, yapayzeka_secimi)
     
     # Oyun sonu puan durumu
-    print("Final score:")
-    print("Player:", player_score)
-    print("Computer:", computer_score)
+    print("Oyuncu:", oyuncu_secimi)
+    print("Yapay Zeka:", yapayzeka_secimi)
+    print("Oyun Bitti!")
+    
 
 # Oyunu başlat
 play_game()
