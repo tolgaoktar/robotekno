@@ -7,44 +7,44 @@ import random
 # Skorlar her tur sonunda güncellenir ve sonunda en yüksek skora sahip oyuncu kazanır.
 # Son olarak, oyun sonunda kazanan açıklanır ve oyun biter.
 
-print("Taş-Kağıt-Makas oyununa hoş geldiniz!")
+print("Valorant oyununa hoş geldiniz!")
 oyuncu_skor = 0
 yapayzeka_skor = 0
 
 for round in range(3):
     print(f"--- {round+1}. Tur ---")
 
-    secenekler = ["taş", "kağıt", "makas"]
+    secenekler = ["fizz", "tsubasa", "yasaho"] 
     yapayzeka_secimi = random.choice(secenekler)
     
-    oyuncu_secimi = input("Taş mı, kağıt mı, makas mı? ").lower()
+    oyuncu_secimi = input("Fizz mı, tsubasa mı, yasaho mı? ").lower()
     while oyuncu_secimi not in secenekler:
-        oyuncu_secimi = input("Geçersiz seçim! Tekrar deneyin (taş/kağıt/makas): ").lower()
+        oyuncu_secimi = input("Geçersiz seçim! Tekrar deneyin (fizz/tsubasa/yasaho): ").lower()
 
     print("Bilgisayarın seçimi: ", yapayzeka_secimi)
 
     if oyuncu_secimi == yapayzeka_secimi:
         print("Berabere!")
-    elif oyuncu_secimi == "taş":
-        if yapayzeka_secimi == "kağıt":
-            print("Kaybettiniz! Bilgisayar kağıt seçti.")
+    elif oyuncu_secimi == "fizz":
+        if yapayzeka_secimi == "tsubasa":
+            print("Kaybettiniz! Bilgisayar tsubasa seçti.")
             yapayzeka_skor += 1
         else:
-            print("Tebrikler! Kazandınız. Bilgisayar makas seçti.")
+            print("Tebrikler! Kazandınız. Bilgisayar yasaho seçti.")
             oyuncu_skor += 1
-    elif oyuncu_secimi == "kağıt":
-        if yapayzeka_secimi == "makas":
-            print("Kaybettiniz! Bilgisayar makas seçti.")
+    elif oyuncu_secimi == "tsubasa":
+        if yapayzeka_secimi == "yasaho":
+            print("Kaybettiniz! Bilgisayar yasaho seçti.")
             yapayzeka_skor += 1
         else:
-            print("Tebrikler! Kazandınız. Bilgisayar taş seçti.")
+            print("Tebrikler! Kazandınız. Bilgisayar fizz seçti.")
             oyuncu_skor += 1
-    elif oyuncu_secimi == "makas":
-        if yapayzeka_secimi == "taş":
-            print("Kaybettiniz! Bilgisayar taş seçti.")
+    elif oyuncu_secimi == "yasaho":
+        if yapayzeka_secimi == "fizz":
+            print("Kaybettiniz! Bilgisayar fizz seçti.")
             yapayzeka_skor += 1
         else:
-            print("Tebrikler! Kazandınız. Bilgisayar kağıt seçti.")
+            print("Tebrikler! Kazandınız. Bilgisayar tsubasa seçti.")
             oyuncu_skor += 1
 
     print(f"Aktif Skor: Oyuncu {oyuncu_skor} - Bilgisayar {yapayzeka_skor}\n")

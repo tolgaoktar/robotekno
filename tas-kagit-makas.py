@@ -6,10 +6,12 @@ import random
 # Kullanıcı 'E' harfine basarsa, oyun yeniden başlar. 
 # 'H' ya da başka bir harfe basarsa program sonlandırılır.
 
-print("Taş-Kağıt-Makas oyununa hoş geldiniz!")
+print("Valorant oyununa hoş geldiniz!")
+oyuncu_skor = 0
+yapayzeka_skor = 0
 #while true başlama komutumuz
 while True:
-    secenekler = ["taş", "kağıt", "makas"]
+    secenekler = ["fizz", "tsubasa", "yasaho"]
 
     #random choice fonksiyonu yapay zekanın karışık bir şekilde üç seneçekten birini seçmesini sağlar.
     yapayzeka_secimi = random.choice(secenekler)
@@ -17,11 +19,11 @@ while True:
     # lower fonksiyonu kullanıcı girdilerini büyük-küçük harf duyarlılığından kurtarır, 
     # büyük TAŞ ya da taş yazabilirsin.
     # input komutu kullanıcıdan veri almak için kullanıyorduk.
-    oyuncu_secimi = input("Taş mı, kağıt mı, makas mı? ").lower()
+    oyuncu_secimi = input("fizz mı, tsubasa mı, yasaho mı? ").lower()
 
     #while eğer anlamına gelir eğer yanlış bir şey yazarsak bu uyarı gelecek.
     while oyuncu_secimi not in secenekler:
-        oyuncu_secimi = input("Geçersiz seçim! Tekrar deneyin (taş/kağıt/makas): ").lower()
+        oyuncu_secimi = input("Geçersiz seçim! Tekrar deneyin (Fizz/Tsubasa/Yasaho): ").lower()
 
     #print ekrana bir mesaj göndermek, input ise kullanıcıdan veri almak için kullanıyorduk.
     print("Bilgisayarın seçimi: ", yapayzeka_secimi)
@@ -33,29 +35,39 @@ while True:
 
     #bir fonksiyon içinde birden fazla eğer ifadesi varsa elif içerisine yazabiliriz. 
     # burada 2 seçeneğimiz var o yüzden birden fazla.
-    elif oyuncu_secimi == "taş":
-        if yapayzeka_secimi == "kağıt":
-            print("Kaybettiniz! Bilgisayar kağıt seçti.")
+    elif oyuncu_secimi == "fizz":
+        if yapayzeka_secimi == "tsubasa":
+            print("Kaybettiniz! Fizz Tsubasayı yener.")
+            yapayzeka_skor += 5
         else:
-            print("Tebrikler! Kazandınız. Bilgisayar makas seçti.")
-
+            print("Tebrikler! Kazandınız. Yasaho Fizz'i yener.")
+            oyuncu_skor += 5
         #kuralları biz belirliyoruz. print ile kullanıcıya gösteriyoruz.
-    elif oyuncu_secimi == "kağıt":
-        if yapayzeka_secimi == "makas":
-            print("Kaybettiniz! Bilgisayar makas seçti.")
+    elif oyuncu_secimi == "tsubasa":
+        if yapayzeka_secimi == "yasaho":
+            print("Kaybettiniz! Yasaho Tsubasa'yı yener.")
+            yapayzeka_skor += 5
         else:
-            print("Tebrikler! Kazandınız. Bilgisayar taş seçti.")
+            print("Tebrikler! Kazandınız. Fizz Tsubasa'yı yener.")
+            oyuncu_skor += 5
 
         #4 olasılık var o yüzden 4 adet mesajımız oldu.
-    elif oyuncu_secimi == "makas":
-        if yapayzeka_secimi == "taş":
-            print("Kaybettiniz! Bilgisayar taş seçti.")
+    elif oyuncu_secimi == "yasaho":
+        if yapayzeka_secimi == "fizz":
+            print("Kaybettiniz! Fizz Yasaho'yu yener.")
+            yapayzeka_skor += 5
         else:
-            print("Tebrikler! Kazandınız. Bilgisayar kağıt seçti.")
+            print("Tebrikler! Kazandınız. Tsubasa Fizz'i yener.")
+            oyuncu_skor += 5
 
 #oyuncu eğer e harfine basarsa oyun tekrar oynanır, başka bir harfe basarsa oyun kapanır.
 #lower küçük e yazılsa da kabul edileceği anlamına gelir:)
+    print("Aktif Skor: Oyuncu {oyuncu_skor} - Bilgisayar {yapayzeka_skor}")
     play_again = input("Tekrar oynamak istiyor musunuz? (E/H) ").lower()
+    
+    if play_again == "e":
+        oyuncu_skor = 0
+        yapayzeka_skor = 0  
     if play_again != "e":
         break
 
